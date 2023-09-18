@@ -16,7 +16,18 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.urls import include
+from django.contrib.auth.views import LoginView, LogoutView
+from django.views.generic.base import TemplateView
+from django.views.generic import RedirectView
+
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('tasks/', include('task.urls')),
+    path('', RedirectView.as_view(url='tasks/', permanent=True))
+]
+urlpatterns += [
+    path('accounts/', include('user.urls')),
 ]

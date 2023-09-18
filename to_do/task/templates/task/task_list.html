@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+<div class="container-list">
+    {% for task in task_list %}
+    <ul>
+      <li>{{task.title}}</li>
+      {{task.description}}
+    </ul>
+    {% endfor %}
+</div>
+  <a href="{% url 'task-create'%}">Add New Task</a>
+</div>
+
+
+<style>
+  .container-list{
+    display: flex;
+    flex-direction: column;
+    background-color: aquamarine;
+    height: 50%;
+    flex: .7;
+    border-radius: 25px;
+  }
+ .container{
+  justify-content: center;
+  display: flex;
+  padding-left: 10%;
+  padding-right: 10%;
+ }
+</style>
+{% endblock %}
